@@ -1,0 +1,14 @@
+{
+  "name": "to-do-list-node",
+  "version": "1.0.0",
+  "description": "Projeto para ensinar nodeJs MVC no Youtube",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Douglas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
