@@ -16,3 +16,5 @@ app.use(routes);
 app.listen(port, () =>
   console.log(`Servidor Rodando em http://localhost:${port}`)
 );
+
+//npm run dev para rodar o servidor
