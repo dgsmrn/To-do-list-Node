@@ -7,5 +7,6 @@ routes.get("/getById/:id/:method", TaskController.getById);
 //quando um parametro é enviado pela rota ele é em formato string
 routes.post("/updateOneTask/:id", TaskController.updateOneTask);
 routes.get("/deleteOneTask/:id", TaskController.deleteOneTask);
+routes.get("/check/:id", TaskController.taskCheck);
 
 module.exports = routes;
