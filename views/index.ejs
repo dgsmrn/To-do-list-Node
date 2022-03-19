@@ -13,28 +13,22 @@
 <body>
 
     <% if (message != "") { %>
+    
     <section class="message message-<%= type %>">    
         <p><%= message %></p>
         <span id="close-message"><i class="bi bi-x"></i></span>
     </section>
+
     <% } %>
 
     <header>
-
         <% if(task==null) { %>
-            <h1>TO DO LIST</h1>
-            <form action="/create" method="post">
-                <input type="text" name="task" id="task" placeholder="insira uma tarefa">
-                <button id="addButton" type="submit">Adicionar</button>
-            </form>
-            <% } else { %>
-                <h1>EDITAR TAREFA</h1>
-                <form action="/updateOneTask/<%= task._id %>" method="post">
-                    <input type="text" name="task" id="task" value="<%= task.task %>">
-                    <button id="updateButton" type="submit">Atualizar</button>
-                </form>
-                <% } %>
+            <%- include('./components/form', {titleForm: "TO DO LIST", action: "create", value: "", idBtn: "addButton", nameBtn: "Adicionar"}) %>
+        <% } else { %>
+            <%- include('./components/form', {titleForm: "EDITAR TAREFA", action: `updateOneTask/${task._id}`, value: task.task, idBtn: "updateButton", nameBtn: "Atualizar"}) %>
+        <% } %>
     </header>
+
     <section id="tasks">
         <ul>
             <% tasksList.forEach((task)=> { %>
@@ -56,25 +50,11 @@
     </section>
 
     <% if (taskDelete !=null) { %>
-        <section id="modal">
-            <div id="card">
-                <div id="head">
-                    <h2>Confirmação</h2>
-                    <a id="close" href="/"><i class="bi bi-x"></i></a>
-                </div>
-                <hr>
-                <p>Deseja realmente apagar a tarefa: <br>
-                    <%= taskDelete.task %>?
-                </p>
-                <div id="btns">
-                    <a id="btnNot" href="/">Não</a>
-                    <a id="btnYes" href="/deleteOneTask/<%= taskDelete._id %>">Sim</a>
-                </div>
+        <%- include('./components/modalDel', {task: taskDelete}) %>        
+    <% } %>
 
-            </div>
-        </section>
-        <% } %>
-            <script src="script.js"></script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>
